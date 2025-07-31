@@ -90,8 +90,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -304,7 +303,7 @@ require('lazy').setup({
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
       -- this setting is independent of vim.o.timeoutlen
-      delay = 0,
+      delay = 800,
       icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
@@ -474,6 +473,12 @@ require('lazy').setup({
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
+  },
+  {
+    'ziglang/zig.vim',
+    ft = 'zig',
+    opts = {},
+    config = function() end,
   },
   {
     -- Main LSP Configuration
@@ -698,6 +703,9 @@ require('lazy').setup({
             },
           },
         },
+        zls = {
+          semantic_tokens = 'partial',
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -809,6 +817,7 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
+      'ziglang/zig.vim',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
